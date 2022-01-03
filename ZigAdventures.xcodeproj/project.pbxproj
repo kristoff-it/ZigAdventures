@@ -11,6 +11,7 @@
 		45483666278324680055C7D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45483665278324680055C7D3 /* ContentView.swift */; };
 		45483668278324690055C7D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45483667278324690055C7D3 /* Assets.xcassets */; };
 		4548366B278324690055C7D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4548366A278324690055C7D3 /* Preview Assets.xcassets */; };
+		45483672278329280055C7D3 /* zighello in Resources */ = {isa = PBXBuildFile; fileRef = 45483671278329280055C7D3 /* zighello */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		45483665278324680055C7D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		45483667278324690055C7D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4548366A278324690055C7D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		45483671278329280055C7D3 /* zighello */ = {isa = PBXFileReference; lastKnownFileType = folder; path = zighello; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		45483662278324680055C7D3 /* ZigAdventures */ = {
 			isa = PBXGroup;
 			children = (
+				45483671278329280055C7D3 /* zighello */,
 				45483663278324680055C7D3 /* ZigAdventuresApp.swift */,
 				45483665278324680055C7D3 /* ContentView.swift */,
 				45483667278324690055C7D3 /* Assets.xcassets */,
@@ -74,6 +77,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4548366E278324690055C7D3 /* Build configuration list for PBXNativeTarget "ZigAdventures" */;
 			buildPhases = (
+				4548367327832B600055C7D3 /* ShellScript */,
 				4548365C278324680055C7D3 /* Sources */,
 				4548365D278324680055C7D3 /* Frameworks */,
 				4548365E278324680055C7D3 /* Resources */,
@@ -125,12 +129,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45483672278329280055C7D3 /* zighello in Resources */,
 				4548366B278324690055C7D3 /* Preview Assets.xcassets in Resources */,
 				45483668278324690055C7D3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4548367327832B600055C7D3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd \"$PROJECT/zighello\"\nzig build -Dtarget=aarch64-ios\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4548365C278324680055C7D3 /* Sources */ = {
@@ -197,6 +223,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LIBRARY_SEARCH_PATHS = "$PROJECT/zighello/zig-out/lib";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -252,6 +279,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LIBRARY_SEARCH_PATHS = "$PROJECT/zighello/zig-out/lib";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,9 +310,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-lzighello";
 				PRODUCT_BUNDLE_IDENTIFIER = zsf.ZigAdventures;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = $PROJECT/zighello/exports.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -311,9 +341,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-lzighello";
 				PRODUCT_BUNDLE_IDENTIFIER = zsf.ZigAdventures;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = $PROJECT/zighello/exports.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
