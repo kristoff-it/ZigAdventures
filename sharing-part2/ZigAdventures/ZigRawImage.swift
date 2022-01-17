@@ -23,6 +23,9 @@ struct ZigRawImage {
         height = Int(h)
         let count = width * height * ZigRawImage.bytes_per_pixel;
         pixels = Data(bytesNoCopy: p!, count: count, deallocator: .custom(freeZeroRawImage))
+        
+        // Hey kid, wanna leak some memory?
+        // pixels = Data(bytesNoCopy: p!, count: count, deallocator: .none)
     }
 }
 
